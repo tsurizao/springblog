@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/partials.html :: head('Your Guess')">
+</head>
+<body>
+<nav th:replace="partials/partials.html :: nav"></nav>
+<div th:if="!${correct}">
+    <h1>Your guess was <span th:text="${guess}"></span></h1>
+    <br>
+    <h1>The roll was <span th:text="${roll}"></span></h1>
+    <br>
+    <h1>Sorry, try again!</h1>
+    <form th:action="@{/roll-dice/}" th:method="GET">
+        <button>Try Again</button>
+    </form>
+</div>
+<div th:if="${correct}">
+    <h1>Your guess was <span th:text="${guess}"></span></h1>
+    <br>
+    <h1>The roll was <span th:text="${roll}"></span></h1>
+    <br>
+    <h1>Great job!</h1>
+    <form th:action="@{/roll-dice/}" th:method="GET">
+        <button>Try Again</button>
+    </form>
+</div>
+</body>
+</html>

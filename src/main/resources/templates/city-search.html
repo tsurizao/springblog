@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search for a city!</title>
+<head th:replace="partials/partials.html :: head('City Search')">
 </head>
 <body>
+<nav th:replace="partials/partials.html :: nav"></nav>
 <form th:action="@{/citysearch}" th:method="POST">
     <label for="query">Search City</label>
   <input type="text" name="query" id="query" placeholder="Enter your favorite city.">

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>City search results</title>
+<head th:replace="partials/partials.html :: head('Your Search')">
 </head>
 <body>
+<nav th:replace="partials/partials.html :: nav"></nav>
 <h1 th:text="${search}"></h1>
 </body>
 </html>

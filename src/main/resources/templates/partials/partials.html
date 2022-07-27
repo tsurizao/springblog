@@ -1,0 +1,16 @@
+<head th:fragment="head(title)">
+  <meta charset="UTF-8">
+  <title th:text="${'Spring Blog | ' + title}"></title>
+</head>
+
+<nav th:fragment="nav">
+  <a href="/">Home</a>
+  <a href="/helloworld">Hello World</a>
+  <a href="/about-us">About Us</a>
+  <a href="/roll-dice">Guess the dice roll</a>
+  <a href="/citysearch">Search City</a>
+</nav>
+
+<footer th:fragment="footer">
+  <p>Page Footer</p>
+</footer>
