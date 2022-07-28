@@ -1,7 +1,7 @@
-package controller;
+package com.example.codeup.springblog.controllers;
 
-import com.example.codeup.springblog.Product;
-import com.example.codeup.springblog.ProductRepository;
+import com.example.codeup.springblog.models.Product;
+import com.example.codeup.springblog.repositories.ProductRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
