@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<nav th:replace="partials/partials.html :: nav"></nav>
+<head th:replace="partials/partials.html :: head('All Posts')"></head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
-<div th:each="item : ${posts}">
-    <span th:text="${item.title}"></span>
-    <p th:text="${item.body}"></p>
-</div>
+<article th:each="post : ${posts}">
+    <h3 th:text="${post.title}"></h3>
+    <p th:text="${post.body}"></p>
+</article>
 <footer th:replace="partials/partials.html :: footer"></footer>
 </body>
 </html>

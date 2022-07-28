@@ -7,26 +7,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.lang.constant.Constable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Controller
 public class PostController {
+
     @GetMapping("/posts")
     public String getAllPosts(Model model){
-        ArrayList<Post> posts = new ArrayList<>();
-        Post post1 = new Post("Post 1", "The body for post 1");
-        Post post2 = new Post("Post 2", "The body of Post 2");
-        posts.add(post1);
-        posts.add(post2);
+        ArrayList<Post> posts = new ArrayList<>(Arrays.asList(
+                new Post(1, "Post 1", "The body for post 1"),
+                new Post(1, "Post 1", "The body for post 2")
+        ));
         model.addAttribute("posts", posts);
-        return "/posts/index";
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String getPost(@PathVariable String id, Model model){
-        model.addAttribute("post", new Post("A title", "The body"));
-        return "/posts/show";
+    public String getPost(@PathVariable long id, Model model){
+        model.addAttribute("post", new Post(1, "A title", "The body"));
+        return "posts/show";
     }
 
     @GetMapping("/posts/create")
