@@ -16,8 +16,9 @@ public class PostController {
     UserRepository userDao;
     PostRepository postDao;
 
-    public PostController(PostRepository postDao){
+    public PostController(PostRepository postDao, UserRepository userDao){
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/posts")
@@ -29,7 +30,8 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String getPost(@PathVariable long id, Model model){
-        model.addAttribute("post", postDao.findById(id));
+        Post post = postDao.findById(id).get();
+        model.addAttribute("post", post);
         return "posts/show";
     }
 
