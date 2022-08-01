@@ -13,9 +13,11 @@ public class Post {
     @Column(length = 255, nullable = false)
     private String title;
 
-
     @Column(columnDefinition = "TEXT", nullable = false)
     private String body;
+
+    @ManyToOne
+    private User user;
 
     public Post() {
     }
