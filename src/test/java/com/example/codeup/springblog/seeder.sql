@@ -1,5 +1,4 @@
 use springblog_db;
-DROP TABLE IF EXISTS posts;
 
 SELECT * FROM posts;
 

@@ -6,6 +6,7 @@
 <article>
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.body}"></p>
+    <p th:text="${post.user.email}"></p>
 </article>
 <footer th:replace="partials/partials.html :: footer"></footer>
 </body>

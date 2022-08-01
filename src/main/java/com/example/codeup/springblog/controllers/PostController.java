@@ -12,6 +12,7 @@ import java.util.List;
 
 @Controller
 public class PostController {
+
     UserRepository userDao;
     PostRepository postDao;
 
@@ -38,9 +39,10 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@RequestParam String title, @RequestParam String body, @RequestParam long user_id){
-        User user = userDao.findById(user_id).get();
-        Post post = new Post(1, title, body);
+    public String createPost(@RequestParam String title, @RequestParam String body){
+        User user = userDao.findById(1L).get();
+        Post post = new Post(title, body);
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
     }
