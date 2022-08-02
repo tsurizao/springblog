@@ -36,14 +36,14 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String getCreatePost(){
+    public String createPost(Model model){
+        model.addAttribute("newPost", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@RequestParam String title, @RequestParam String body){
+    public String createPost(@ModelAttribute Post post){
         User user = userDao.findById(1L).get();
-        Post post = new Post(title, body);
         post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
@@ -52,6 +52,21 @@ public class PostController {
     @GetMapping("/posts/delete/{id}")
     public String deletePost(@PathVariable long id){
         postDao.deleteById(id);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String editPost(Model model, @PathVariable long id){
+        Post post = postDao.findById(id).get();
+        model.addAttribute("post", post);
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(@ModelAttribute Post post){
+        User user = userDao.findById(1L).get();
+        post.setUser(user);
+        postDao.save(post);
         return "redirect:/posts";
     }
 }
