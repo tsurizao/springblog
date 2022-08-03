@@ -4,6 +4,7 @@ import com.example.codeup.springblog.models.Post;
 import com.example.codeup.springblog.models.User;
 import com.example.codeup.springblog.repositories.UserRepository;
 import com.example.codeup.springblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +47,7 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post){
-        User user = userDao.findById(1L).get();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
         postDao.save(post);
         emailService.prepareAndSend(post, "You created a new post");
