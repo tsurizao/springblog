@@ -60,14 +60,14 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}/edit")
-    public String editPost(Model model, @PathVariable long id){
+    public String showEditForm(Model model, @PathVariable long id){
         Post post = postDao.findById(id).get();
         model.addAttribute("post", post);
         return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String editPost(@ModelAttribute Post post){
+    public String submitEditForm(@ModelAttribute Post post){
         User user = userDao.findById(1L).get();
         post.setUser(user);
         postDao.save(post);
