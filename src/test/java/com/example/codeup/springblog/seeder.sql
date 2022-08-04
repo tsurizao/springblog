@@ -6,6 +6,8 @@ FROM posts;
 SELECT *
 FROM users;
 
+DELETE FROM posts WHERE id = '28';
+
 INSERT INTO users (id, email, password, username)
 VALUES (1, 'bob@bobmail.com', 'bob', 'bob');
 
